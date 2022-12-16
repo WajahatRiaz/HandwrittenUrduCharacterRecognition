@@ -1,13 +1,17 @@
+# Author: Wajahat Riaz 
+# License: Apache-2.0
+
+# Import classifiers and performance metri
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.metrics import classification_report
 
+# Standard scientific Python imports
 import matplotlib.image as im
 import matplotlib.pyplot as plt
 import cv2
@@ -34,12 +38,9 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Al
     dataset_alif.append(img_instance) 
     images_of_alif = images_of_alif + 1
 
-print("\nVector Table for Alif\n")
 data1 = np.empty([images_of_alif, DIMENSIONS], dtype = list)
 for i in range(images_of_alif):
     data1[i] = dataset_alif[i]
-print(data1.shape)
-print(data1)
 
 
 dataset_bay=[]
@@ -59,12 +60,9 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Ba
     dataset_bay.append(img_instance) 
     images_of_bay = images_of_bay + 1
 
-print("\nVector Table for Bay\n")
 data2 = np.empty([images_of_bay, DIMENSIONS], dtype = list)
 for i in range(images_of_bay):
     data2[i] = dataset_bay[i]
-print(data2.shape)
-print(data2)
 
 dataset_jeem=[]
 images_of_jeem = 0 
@@ -83,13 +81,9 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Je
     dataset_jeem.append(img_instance) 
     images_of_jeem = images_of_jeem + 1
 
-print("\nVector Table for Jeem\n")
 data3 = np.empty([images_of_jeem, DIMENSIONS], dtype = list)
 for i in range(images_of_jeem):
     data3[i] = dataset_jeem[i]
-print(data3.shape)
-print(data3)
-
 
 dataset_daal=[]
 images_of_daal = 0
@@ -107,12 +101,10 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\Dataset\\Da
     dataset_daal.append(img_instance) 
     images_of_daal = images_of_daal + 1
 
-print("\nVector Table for Daal\n")
+
 data4 = np.empty([images_of_daal, DIMENSIONS], dtype = list)
 for i in range(images_of_daal):
     data4[i] = dataset_daal[i]
-print(data4.shape)
-print(data4)
 
 instances = images_of_alif + images_of_bay + images_of_jeem + images_of_daal
 
@@ -121,41 +113,65 @@ print("dimension" , DIMENSIONS)
 
 x = np.concatenate((data1,data2,data3,data4))
 
-print("my x matrix", x)
-print("dimensions of x ", x.shape)
+print("My X matrix of order", x.shape ,"is given as follows: ", x)
 
-tag_alif = np.full((images_of_alif,1), 1, dtype=int)
-print(tag_alif.shape)
-tag_bay = np.full((images_of_bay,1), 2, dtype=int)
+tag_alif = np.full((images_of_alif,1), 'A', dtype=str)
 
-tag_jeem = np.full((images_of_jeem,1), 3, dtype=int)
+tag_bay = np.full((images_of_bay,1), 'B', dtype=str)
 
-tag_daal = np.full((images_of_daal,1), 4, dtype=int)
+tag_jeem = np.full((images_of_jeem,1), 'J', dtype=str)
+
+tag_daal = np.full((images_of_daal,1), 'D', dtype=str)
 
 
-out_vector = np.concatenate((tag_alif,tag_bay,tag_jeem,tag_daal))
-print(out_vector.shape)
+tag_vector = np.concatenate((tag_alif,tag_bay,tag_jeem,tag_daal))
+print("My tags are:", tag_vector)
 
-y = np.ravel(out_vector, order='A')
+y = np.ravel(tag_vector, order='A')
 
 X_train, X_test, y_train, y_test = train_test_split(x,y,test_size=0.3)
 
 model_1 = RandomForestClassifier(n_estimators=500)
 model_1.fit(X_train, y_train)
 predictions = model_1.predict(X_test)
-print(accuracy_score(y_test, predictions))
-print(confusion_matrix(y_test,predictions))
+print("Accuracy score of Random Forest Classifier:" , accuracy_score(y_test, predictions))
+print(
+    f"Classification report for Random Forest Classifier {model_1}:\n"
+    f"{classification_report(y_test, predictions)}\n"
+)
+disp = ConfusionMatrixDisplay.from_predictions(y_test, predictions)
+disp.figure_.suptitle("Confusion matrix for Random Forest Classifier")
+print(f"Confusion matrix for Random Forest Classifier:\n{disp.confusion_matrix}")
+plt.show()
 
 model_2 = SVC()
 model_2.fit(X_train, y_train)
 predictions = model_2.predict(X_test)
-print(accuracy_score(y_test, predictions))
+print("Accuracy score of SVM Classifier:" , accuracy_score(y_test, predictions))
+print(
+    f"Classification report for SVM Classifier {model_2}:\n"
+    f"{classification_report(y_test, predictions)}\n"
+)
 
+disp = ConfusionMatrixDisplay.from_predictions(y_test, predictions)
+disp.figure_.suptitle("Confusion matrix for SVM Classifier")
+print(f"Confusion matrix for SVM Classifier:\n{disp.confusion_matrix}")
+plt.show()
 
-#min_max_scaler = MinMaxScaler()
-#X_train_minmax = min_max_scaler.fit_transform(X_train)
+scalar = StandardScaler()
+X_train_scalar = scalar.fit_transform(X_train)
+X_test_scalar = scalar.transform(X_test)
 
-#model_3 = LogisticRegression()
-#model_3.fit(X_train, y_train)
-#predictions = model_3.predict(X_test)
-#print(accuracy_score(y_test, predictions))
+model_3 = LogisticRegression(solver='newton-cg',multi_class="ovr", max_iter=500)
+model_3.fit(X_train_scalar, y_train)
+predictions = model_3.predict(X_test_scalar)
+print("Accuracy score of Logistic Regression:" , accuracy_score(y_test, predictions))
+print(
+    f"Classification report for Logistic Regression {model_3}:\n"
+    f"{classification_report(y_test, predictions)}\n"
+)
+
+disp = ConfusionMatrixDisplay.from_predictions(y_test, predictions)
+disp.figure_.suptitle("Confusion matrix for Logistic Regression")
+print(f"Confusion matrix for Logistic Regression:\n{disp.confusion_matrix}")
+plt.show()
