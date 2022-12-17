@@ -1,7 +1,8 @@
 # Author: Wajahat Riaz 
 # License: Apache-2.0
+# Github Link: https://github.com/WajahatRiaz/HandwrittenUrduCharacterRecognition
 
-# Import classifiers and performance metri
+# Import classifiers and performance metrics
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
@@ -18,15 +19,25 @@ import cv2
 import numpy as np
 import os 
 
-PIXELS = 40
-DIMENSIONS = PIXELS*PIXELS
+PIXELS = 40                     # Macro defining number of pixels
+DIMENSIONS = PIXELS * PIXELS    # Defining a resolution for the sample images
+TRAINING_SIZE = 0.30            # By convention 30% of dataset will be used for testing
 
-dataset_alif=[]
-images_of_alif = 0
+dataset_alif = []               # List declared to store image vectors of alif
+dataset_bay = []                # List declared to store image vectors of bay
+dataset_jeem = []               # List declared to store image vectors of jeem
+dataset_daal = []               # List declared to store image vectors of daal
 
+images_of_alif = 0              # To keep track of number of alif images read from folder
+images_of_bay = 0               # To keep track of number of bay images read from folder
+images_of_jeem = 0              # To keep track of number of jeem images read from folder
+images_of_daal = 0              # To keep track of number of daal images read from folder
+
+# reading images of alif from the folder
 for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Alif\\"):
     
     img=cv2.imread("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Alif\\" + filename , cv2.IMREAD_GRAYSCALE)
+
     cv2.imwrite("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Alif\\" + filename , img)
  
     img_50x50 = cv2.resize(img,(PIXELS,PIXELS))
@@ -38,17 +49,16 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Al
     dataset_alif.append(img_instance) 
     images_of_alif = images_of_alif + 1
 
+# Generating matrix from list
 data1 = np.empty([images_of_alif, DIMENSIONS], dtype = list)
 for i in range(images_of_alif):
     data1[i] = dataset_alif[i]
 
-
-dataset_bay=[]
-images_of_bay = 0
-
+# reading images of bay from the folder
 for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Bay\\"):
     
     img=cv2.imread("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Bay\\" + filename , cv2.IMREAD_GRAYSCALE) 
+    
     cv2.imwrite("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Bay\\" + filename , img)
 
     img_50x50 = cv2.resize(img,(PIXELS,PIXELS))
@@ -60,16 +70,16 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Ba
     dataset_bay.append(img_instance) 
     images_of_bay = images_of_bay + 1
 
+# Generating matrix from list
 data2 = np.empty([images_of_bay, DIMENSIONS], dtype = list)
 for i in range(images_of_bay):
     data2[i] = dataset_bay[i]
 
-dataset_jeem=[]
-images_of_jeem = 0 
-
+# reading images of jeem from the folder
 for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Jeem\\"):
     
     img=cv2.imread("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Jeem\\" + filename , cv2.IMREAD_GRAYSCALE) 
+    
     cv2.imwrite("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Jeem\\" + filename , img)
 
     img_50x50 = cv2.resize(img,(PIXELS,PIXELS))
@@ -81,55 +91,59 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Je
     dataset_jeem.append(img_instance) 
     images_of_jeem = images_of_jeem + 1
 
+# Generating matrix from list
 data3 = np.empty([images_of_jeem, DIMENSIONS], dtype = list)
 for i in range(images_of_jeem):
     data3[i] = dataset_jeem[i]
 
-dataset_daal=[]
-images_of_daal = 0
-
+# reading images of daal from the folder
 for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\Dataset\\Daal\\"):
     
     img=cv2.imread("D:\\HandwrittenUrduCharacterRecognition\\Dataset\\daal\\" + filename , cv2.IMREAD_GRAYSCALE) 
+   
     cv2.imwrite("D:\\HandwrittenUrduCharacterRecognition\\Dataset\\daal\\" + filename , img)
 
     img_50x50 = cv2.resize(img,(PIXELS,PIXELS))
     img_instance = img_50x50.flatten() 
+   
     if DIMENSIONS != img_instance.size:
         print("image pixel error")
     
     dataset_daal.append(img_instance) 
     images_of_daal = images_of_daal + 1
 
-
+# Generating matrix from list
 data4 = np.empty([images_of_daal, DIMENSIONS], dtype = list)
 for i in range(images_of_daal):
     data4[i] = dataset_daal[i]
 
+# Determining total number of image instances 
 instances = images_of_alif + images_of_bay + images_of_jeem + images_of_daal
 
-print("instances", instances)
-print("dimension" , DIMENSIONS)
+print("Total Instances in the data set:", instances)
+print("Total Features or Dimension of data set:" , DIMENSIONS)
 
-x = np.concatenate((data1,data2,data3,data4))
+# Stacking the individual matrices
+x = np.concatenate((data1, data2, data3, data4))
 
-print("My X matrix of order", x.shape ,"is given as follows: ", x)
+# Generating the data matrix
+print("My X matrix of order", x.shape, "is given as follows: ", x)
 
-tag_alif = np.full((images_of_alif,1), 'A', dtype=str)
+# Generating tags for the instances
+tag_alif = np.full((images_of_alif, 1), 'A', dtype=str)
+tag_bay = np.full((images_of_bay, 1), 'B', dtype=str)
+tag_jeem = np.full((images_of_jeem, 1), 'J', dtype=str)
+tag_daal = np.full((images_of_daal, 1), 'D', dtype=str)
 
-tag_bay = np.full((images_of_bay,1), 'B', dtype=str)
-
-tag_jeem = np.full((images_of_jeem,1), 'J', dtype=str)
-
-tag_daal = np.full((images_of_daal,1), 'D', dtype=str)
-
-
+# Generating the tag vector
 tag_vector = np.concatenate((tag_alif,tag_bay,tag_jeem,tag_daal))
 print("My tags are:", tag_vector)
 
+# Converting vector to 1D array
 y = np.ravel(tag_vector, order='A')
 
-X_train, X_test, y_train, y_test = train_test_split(x,y,test_size=0.3)
+# Splitting data for testing and training
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = TRAINING_SIZE)
 
 model_1 = RandomForestClassifier(n_estimators=500)
 model_1.fit(X_train, y_train)
