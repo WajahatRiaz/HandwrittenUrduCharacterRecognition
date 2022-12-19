@@ -94,7 +94,7 @@ for filename in os.listdir("D:\\HandwrittenUrduCharacterRecognition\\dataset\\Je
 
     img_50x50 = cv2.resize(img,(PIXELS,PIXELS))
     img_instance = img_50x50.flatten() 
-
+ 
     if DIMENSIONS != img_instance.size:
         print("image pixel error")
     
