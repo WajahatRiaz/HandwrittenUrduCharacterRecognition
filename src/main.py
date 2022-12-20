@@ -210,7 +210,7 @@ predictions = model_3.predict(X_test_scalar)
 
 lr_probs = model_3.predict_proba(X_test_scalar)
 lr_auc = roc_auc_score(y_test, lr_probs, multi_class='ovr')
-print("Linear Regression: AUROC = %.3f" %(lr_auc))
+print("Logistic Regression: AUROC = %.3f" %(lr_auc))
 print("Accuracy score of Logistic Regression:" , accuracy_score(y_test, predictions))
 print(
     f"Classification report for Logistic Regression {model_3}:\n"
