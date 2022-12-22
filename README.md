@@ -1,7 +1,7 @@
 # Handwritten Urdu Character Recognition in Machine Learning using Scikit-learn
 
 **_Abstract-_** Many localized languages struggle to reap the beneﬁts of recent advancements in character recognition systems due to the lack of a substantial amount of labeled training data. This is due to the difﬁculty in generating large amounts of labeled data for such languages and the inability of machine learning techniques to properly learn from a small number of training samples. This problem is solved by introducing a technique of generating new training samples from the ground up with realistic augmentations that reﬂect actual variations that are present in human handwriting, by adding random controlled noise. The results with a mere 70 handwritten papers and about 500 samples of each Urdu character per class (i.e Alif, Bay, Jeem, and Daal) surpass existing character recognition results in Urdu. This system is useful in character recognition for localized languages that lack much-labeled training data and even in other related more general contexts such as object recognition. A strategy has also been developed to implement a simple pipeline that can be used by any machine learning enthusiast and test the basic classifiers like Decision Trees, Random Forest, Linear SVM, Logistic Regression, and Stochastic Gradient Descent.
-<br>**_Keywords_** Character Recognition, Urdu Character Recognition, Multi-class Classification, Logistic Regression, SVM, Random Forest, Stochastic Gradient Descent, Decision Trees, Scikit-learn
+<br><br>**_Keywords_** Character Recognition, Urdu Character Recognition, Multi-class Classification, Logistic Regression, SVM, Random Forest, Stochastic Gradient Descent, Decision Trees, Scikit-learn
 
 ## 1. Introduction
 Handwritten character recognition is a nearly solved problem for many of the mainstream languages thanks to the recent advancements in machine learning models [1].
@@ -53,15 +53,15 @@ Stochastic Gradient Descent (SGD) is a simple yet very efficient approach to fit
 
 ## References
 
-<br>[1]	Y. LeCun, L. Bottou, Y. Bengio, and P. Haﬀner, “Gradient-based learning applied to document recognition,” Proceedings of the IEEE, vol.86, no.11, pp.2278–2324, 1998.
-<br>[2]	W. Jiang and L. Zhang, “Edge-siamnet and edge-triplenet: New deep learning models for handwritten numeral recognition,” IEICE Transactions on Information and Systems, vol.103, no.3, pp.720–723, 2020.
-<br>[3]	G. Cohen, S. Afshar, J. Tapson, and A. Van Schaik, “Emnist: Extending mnist to handwritten letters,” 2017 International Joint Conference on Neural Networks (IJCNN), pp.2921–2926, IEEE, 2017.
-<br>[4]	Hinton, G.E., Krizhevsky, A., Wang, S.D.: Transforming auto-encoders. In: ICANN, Berlin, Heidelberg (2011) 44–51
-<br>[5]	Y. Song, G. Xiao, Y. Zhang, L. Yang, and L. Zhao, “A handwrittencharacter extraction algorithm for multi-language document image,” 2011 International Conference on Document Analysis and Recognition, pp.93–98, IEEE, 2011.
-<br>[6]	H. Kusetogullari, A. Yavariabdi, A. Cheddad, H. Grahn, and J. Hall, “Ardis: a Swedish historical handwritten digit dataset,” Neural Computing and Applications, pp.1–14, 2019.
-<br>[7]	M. Biswas, R. Islam, G.K. Shom, M. Shopon, N. Mohammed,S. Momen, and M.A. Abedin, “Banglalekha-isolated: A comprehensive Bangla handwritten character dataset,” arXiv preprintarXiv:1703.10661, 2017.
-<br>[8]	H. Khosravi and E. Kabir, “Introducing a very large dataset of handwritten Farsi digits and a study on their varieties,” Pattern recognition letters, vol.28, no.10, pp.1133–1141, 2007.
-<br>[9]	U. Bhattacharya and B.B. Chaudhuri, “Handwritten numeraldatabases of Indian scripts and multistage recognition of mixed numerals,” IEEE transactions on pattern analysis and machine intelligence, vol.31, no.3, pp.444–457, 2008.
-<br>[10]	Multiclass and Multioutput Algorithms — scikit-learn 1.2.0 documentation
+<br>**[1]**	Y. LeCun, L. Bottou, Y. Bengio, and P. Haﬀner, “Gradient-based learning applied to document recognition,” Proceedings of the IEEE, vol.86, no.11, pp.2278–2324, 1998.
+<br>**[2]**	W. Jiang and L. Zhang, “Edge-siamnet and edge-triplenet: New deep learning models for handwritten numeral recognition,” IEICE Transactions on Information and Systems, vol.103, no.3, pp.720–723, 2020.
+<br>**[3]**	G. Cohen, S. Afshar, J. Tapson, and A. Van Schaik, “Emnist: Extending mnist to handwritten letters,” 2017 International Joint Conference on Neural Networks (IJCNN), pp.2921–2926, IEEE, 2017.
+<br>**[4]**	Hinton, G.E., Krizhevsky, A., Wang, S.D.: Transforming auto-encoders. In: ICANN, Berlin, Heidelberg (2011) 44–51
+<br>**[5]**	Y. Song, G. Xiao, Y. Zhang, L. Yang, and L. Zhao, “A handwrittencharacter extraction algorithm for multi-language document image,” 2011 International Conference on Document Analysis and Recognition, pp.93–98, IEEE, 2011.
+<br>**[6]**	H. Kusetogullari, A. Yavariabdi, A. Cheddad, H. Grahn, and J. Hall, “Ardis: a Swedish historical handwritten digit dataset,” Neural Computing and Applications, pp.1–14, 2019.
+<br>**[7]**	M. Biswas, R. Islam, G.K. Shom, M. Shopon, N. Mohammed,S. Momen, and M.A. Abedin, “Banglalekha-isolated: A comprehensive Bangla handwritten character dataset,” arXiv preprintarXiv:1703.10661, 2017.
+<br>**[8]**	H. Khosravi and E. Kabir, “Introducing a very large dataset of handwritten Farsi digits and a study on their varieties,” Pattern recognition letters, vol.28, no.10, pp.1133–1141, 2007.
+<br>**[9]**	U. Bhattacharya and B.B. Chaudhuri, “Handwritten numeraldatabases of Indian scripts and multistage recognition of mixed numerals,” IEEE transactions on pattern analysis and machine intelligence, vol.31, no.3, pp.444–457, 2008.
+<br>**[10]**	Multiclass and Multioutput Algorithms — scikit-learn 1.2.0 documentation
  
 
