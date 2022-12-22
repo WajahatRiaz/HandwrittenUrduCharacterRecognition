@@ -29,7 +29,7 @@ import pandas as pd
 import cv2
 import os 
 
-PIXELS = 40                     # Macro defining number of pixels
+PIXELS = 50                     # Macro defining number of pixels
 DIMENSIONS = PIXELS * PIXELS    # Defining a resolution for the sample images
 TRAINING_SIZE = 0.30            # By convention 30% of dataset will be used for testing
 
