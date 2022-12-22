@@ -6,4 +6,4 @@ Many localized languages struggle to reap the beneﬁts of recent advancements i
 ## 2. The Pipeline:
 The generic flow of this simple pipeline is illustrated below:
 
-<br><img width="497" alt="image" src="https://user-images.githubusercontent.com/61377755/208210826-0b1ef0a9-d1f8-4290-a2f1-d139b0815568.png">
+<br><img width="280" alt="image" src="https://user-images.githubusercontent.com/61377755/209229446-2ffd52a2-f174-42e2-8014-5db5aacb358a.png">
