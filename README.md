@@ -22,9 +22,13 @@ written digit recognition task. Multiple works [5], [6], [7], [8], [9] have used
 The generic flow of this simple pipeline is illustrated below:
 
 <br><img width="280" alt="image" src="https://user-images.githubusercontent.com/61377755/209229446-2ffd52a2-f174-42e2-8014-5db5aacb358a.png">
-<br><img width="287" alt="image" src="https://user-images.githubusercontent.com/61377755/209229678-3d9771b8-cc57-4664-98bd-fe77955c731c.png"
+
+<br><img width="287" alt="image" src="https://user-images.githubusercontent.com/61377755/209229678-3d9771b8-cc57-4664-98bd-fe77955c731c.png">
+
 <br><img width="267" alt="image" src="https://user-images.githubusercontent.com/61377755/209229759-b917fd4e-1911-4350-b1f3-0cdb7ecc35b3.png">
+
 <br><img width="275" alt="image" src="https://user-images.githubusercontent.com/61377755/209229839-ea2bf728-70f9-4007-bfa3-12aa1763e1be.png">
+
 <br><img width="248" alt="image" src="https://user-images.githubusercontent.com/61377755/209229901-310b3f23-ead4-48ef-aed6-3b2a96135830.png">
 
 
