@@ -1,7 +1,7 @@
 # Handwritten Urdu Character Recognition in Machine Learning using Scikit-learn
 
 **_Abstract-_** Many localized languages struggle to reap the beneﬁts of recent advancements in character recognition systems due to the lack of a substantial amount of labeled training data. This is due to the difﬁculty in generating large amounts of labeled data for such languages and the inability of machine learning techniques to properly learn from a small number of training samples. This problem is solved by introducing a technique of generating new training samples from the ground up with realistic augmentations that reﬂect actual variations that are present in human handwriting, by adding random controlled noise. The results with a mere 70 handwritten papers and about 500 samples of each Urdu character per class (i.e Alif, Bay, Jeem, and Daal) surpass existing character recognition results in Urdu. This system is useful in character recognition for localized languages that lack much-labeled training data and even in other related more general contexts such as object recognition. A strategy has also been developed to implement a simple pipeline that can be used by any machine learning enthusiast and test the basic classifiers like Decision Trees, Random Forest, Linear SVM, Logistic Regression, and Stochastic Gradient Descent.
-<br><br>**_Keywords_** Character Recognition, Urdu Character Recognition, Multi-class Classification, Logistic Regression, SVM, Random Forest, Stochastic Gradient Descent, Decision Trees, Scikit-learn
+<br><br>**_Keywords:_** Character Recognition, Urdu Character Recognition, Multi-class Classification, Logistic Regression, SVM, Random Forest, Stochastic Gradient Descent, Decision Trees, Scikit-learn
 
 ## 1. Introduction
 Handwritten character recognition is a nearly solved problem for many of the mainstream languages thanks to the recent advancements in machine learning models [1].
@@ -50,6 +50,9 @@ output to between 0 and 1 so that it can be interpreted as a probability. If the
 
 ### E. Stochastic Gradient Descent (Modified Huber)
 Stochastic Gradient Descent (SGD) is a simple yet very efficient approach to fitting linear classifiers and regressors under convex loss functions such as linear SVM and logistic regression. Even though SGD has been around in the machine learning community for a long time, it has received a considerable amount of attention just recently in the context of large-scale learning. Strictly speaking, SGD is merely an optimization technique and does not correspond to a specific family of machine learning models. It is only a way to train a model. 
+
+## 5. Results
+The results can be found in the documents folder.
 
 ## References
 
